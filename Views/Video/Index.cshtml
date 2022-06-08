@@ -23,7 +23,6 @@
         padding: 10px;
         border: solid 1px;
         background-color: white;
-       
     }
 
         .card:hover {
@@ -32,14 +31,13 @@
 
     .container-fluid {
         background-color: lightgray;
-        height: 550px;                              /* scroll bar appearing when needed*/
+        height: 550px; /* scroll bar appearing when needed*/
         overflow-y: auto;
         overflow-x: hidden;
     }
-
 </style>
 <h2>Videos</h2>
-<br/>
+<br />
 <h3> "/Media/Videos" Folder</h3>
 <div class="container-fluid">
 
@@ -53,24 +51,35 @@
         <div class="col-lg-4">
             <div class="container">
                 <div class="card" style="width:260px">
-                    <video width="240">
-                        <source src="@Url.Content(VideoPath)" type="video/mp4">
-                       </video>
+                    <a href="@Url.Content(VideoPath)" data-fancybox="gallery" data-caption="FancyBox.ToSting()" data-width="500" data-height="500">
+
+                        <video width="240">
+                            <source src="@Url.Content(VideoPath)" type="video/mp4">
+                        </video>
+                    </a>
                         <div class="card-body">
-                            <h6 class="card-title"> @Html.DisplayFor(modelItem => item.FileName)</h6>
-                            <button type="button" class="btn btn-success"> @Html.ActionLink("Download", "DownloadFile", new { filename = item.FileName }, new { style = "color: white;" })</button>  @*//chaanged color to white so it displays*@
-                            <button type="button" class="btn btn-danger"> @Html.ActionLink("Delete", "DeleteFile", new { filename = item.FileName }, new { style = "color: white;" })</button>
-                        </div>
+                        <h6 class="card-title"> @Html.DisplayFor(modelItem => item.FileName)</h6>
+                        <button type="button" class="btn btn-success"> @Html.ActionLink("Download", "DownloadFile", new { filename = item.FileName }, new { style = "color: white;" })</button>  @*//chaanged color to white so it displays*@
+                        <button type="button" class="btn btn-danger"> @Html.ActionLink("Delete", "DeleteFile", new { filename = item.FileName }, new { style = "color: white;" })</button>
+                    </div>
                 </div>
             </div>
         </div>
 
-                        }
+    }
 
 </div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="jquery.fancybox.min.js"></script>
 <script>
-    $(document).ready(function ($) {
-        $(".gallery").fancybox();
+    $('[data-fancybox="gallery"]').fancybox({
+        buttons: [
+            'fullScreen',
+            'close'
+        ],
+        thumbs: {
+            autoStart: true
+        }
     });
 </script>
 

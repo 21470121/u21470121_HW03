@@ -43,7 +43,7 @@ namespace HW3_U21470121.Controllers
            
             System.IO.File.Delete(path);
 
-            return RedirectToAction("Index", "Image");
+            return RedirectToAction("Index", "File");
 
         }
     }

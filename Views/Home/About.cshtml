@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "About";
+    var ImagePath = "~/Media/AboutHome/Deandre.jpg";
+}
+
+<h2> About Me</h2>
+<br/>
+<h4>Bio</h4>
+<br/>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">Bio</div>
+        <div class="col-sm-6">Deandre Vanmali</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <p>
+                Hi there, I am Deandre Vanmali. Im a 2nd year student. Generally Im a really future-driven person and goal-oriented. I hate not being able to figure something out and will probably not stop trying till I get it right - which I believe is a good quality to have especially for this module. 
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <img  src="@Url.Content(ImagePath)" style="width:200px"/> 
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .container-fluid {
+        background-color: lightblue;
+        padding: 20px;
+    }
+</style>

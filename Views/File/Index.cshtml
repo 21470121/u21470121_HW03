@@ -1,0 +1,44 @@
+﻿
+
+@model IEnumerable<HW3_U21470121.Models.FileModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Documents of any type</h2>
+
+<br/>
+
+<h3> ""~/App_Data/Documents" Folder</h3>
+
+
+<div class="container-fluid">
+    <table class="table">
+        <thead class="thead-dark" style="background-color: black; color: white;">
+            <tr id="heading">
+                <th>File Name</th>
+                <th>Download Option</th>
+                <th>Delete Option</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>  @Html.DisplayFor(modelItem => item.FileName) </td>
+                <td><button type="button" class="btn btn-success"> @Html.ActionLink("Download", "DownloadFile", new { filename = item.FileName}, new { style = "color: white;" })</button> </td> @*//chaanged color to white so it displays*@
+                <td><button type="button" class="btn btn-danger"> @Html.ActionLink("Delete", "DeleteFile", new { filename = item.FileName }, new { style = "color: white;" })</button></td>
+            </tr>
+
+            }
+</table>
+</div>
+
+@*@foreach (var item in Model)
+{
+    @Html.DisplayFor(modelItem => item.FileName)
+}*@
+    
+
+

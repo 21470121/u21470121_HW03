@@ -1,0 +1,81 @@
+﻿@model IEnumerable<HW3_U21470121.Models.FileModel>
+@{
+    ViewBag.Title = "Index";
+}
+@*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">*@
+<link rel="stylesheet" type="text/css" href="jquery.fancybox.min.css">
+
+<style>
+
+    .card-img-top {
+        width: 100%;
+        height: 15vw;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        background-size: auto;
+        object-fit: contain;
+    }
+
+    div.container {
+        padding: 10px 20px;
+    }
+
+    .card {
+        padding: 10px;
+        border: solid 1px;
+        background-color: white;
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    .container-fluid {
+        background-color: lightgray;
+        height: 550px; /* scroll bar appearing when needed*/
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+</style>
+<h2>Index</h2>
+<div class="container-fluid">
+
+    @{var FancyBox = 0; }
+
+    @foreach (var item in Model)
+    {
+        FancyBox += 1;
+        var ImagePath = "~/Media/Images/" + item.FileName;
+
+        <div class="col-lg-4">
+            <div class="container">
+                <div class="card" style="width:250px">
+                    <a href="@Url.Content(ImagePath)" data-fancybox="gallery" data-caption="FancyBox.ToSting()" data-width="500" data-height="500">
+                        <img class="card-img-top" src="@Url.Content(ImagePath)" style="width:100%">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="card-title"> @Html.DisplayFor(modelItem => item.FileName)</h6>
+                        <button type="button" class="btn btn-success"> @Html.ActionLink("Download", "DownloadFile", new { filename = item.FileName }, new { style = "color: white;" })</button>  @*//chaanged color to white so it displays*@
+                        <button type="button" class="btn btn-danger"> @Html.ActionLink("Delete", "DeleteFile", new { filename = item.FileName }, new { style = "color: white;" })</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="jquery.fancybox.min.js"></script>
+<script>
+    $('[data-fancybox="gallery"]').fancybox({
+        buttons: [
+            'fullScreen',
+            'close'
+        ],
+        thumbs: {
+            autoStart: true
+        }
+    });
+</script>

@@ -1,0 +1,67 @@
+﻿
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1> Heading</h1>
+<br />
+<h3>Headding 2</h3>
+<br />
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">Description</div>
+        <div class="col-sm-6">Option Selection</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <p>
+                An aim is a goal or objective to achieve in life. In order to succeed in life, one must have a goal. My aim in life is to be a teacher. Teaching is a noble and responsible profession. I have come to know that the ever-increasing misery and distress, are due to the ignorance and illiteracy of the people of our country. So I have decided to spread education among the masses as much as possible within my humble power. As a teacher, I shall try my best to impart man-making education. Some say that money is the honey of life. But I do not agree with them. Rather, I think that morality is the real honey of life. I want to be a lovable and respectable person as a teacher in the future.
+            </p>
+
+        </div>
+        <div class="col-lg-6">
+            @*<div class="form-check">
+                <input type="radio" class="form-check-input" id="radio2" name="optradio">
+                <label class="form-check-label" for="radio2">Document</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="radio2" name="optradio">
+                <label class="form-check-label" for="radio2">Image</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="radio2" name="optradio">
+                <label class="form-check-label" for="radio2">Video</label>
+            </div>*@
+
+            
+            <div>
+                <div class="form-horizontal">
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                    {
+                            <div>
+                                <div> Document @Html.RadioButton("FileType", "Document")</div>
+                                <div>Image   @Html.RadioButton("FileType", "Image") </div>
+                                <div>Video  @Html.RadioButton("FileType", "Video") </div>
+                            </div>
+
+                            <br/>
+                            <div><input type="file" name="files" /></div>
+                            <br />
+                            <div><input type="submit" value="Upload" /></div>
+                            }
+                        </div>
+                        <br />
+                    </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container-fluid{
+        background-color: lightblue;
+        padding: 20px;
+    }
+</style>
